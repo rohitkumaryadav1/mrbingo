@@ -11,32 +11,37 @@ const EMOTIONS_DB = {
         Face: ["angry_face.jpg", "angry_face(1).jpeg", "OIP.jpg"]
     },
     Disgust: {
-        Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
-        Cartoon: ["disgust1.png", "OIP.jpg", "OIP (1).jpg"],
-        Face: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"]
+        Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"],
+        Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
+        Face: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"]
     },
     Fear: {
-        Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
+        Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"],
         Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
-        Face: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"]
+        Face: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"]
     },
     Happy: {
         Emoji: ["happy.png", "OIP.jpg", "OIP (1).jpg"],
         Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
-        Face: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"]
+        Face: ["OIP.jpg", "happy.png", "153534992.jpg"]
     },
     Sad: {
         Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
-        Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
+        Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"],
         Face: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"]
     },
     Shock: {
         Emoji: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
-        Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"],
+        Cartoon: ["OIP.jpg", "OIP (1).jpg", "OIP (3).jpg"],
         Face: ["OIP.jpg", "OIP (1).jpg", "OIP (2).jpg"]
     }
 };
 
+const EMOTION_IMAGE_URLS = import.meta.glob('/src/public/**/*.{png,jpg,jpeg}', {
+    eager: true,
+    query: '?url',
+    import: 'default'
+});
 const DIFFICULTY_CONFIG = {
     EASY: { label: 'Easy', folder: 'Emoji', color: 'from-green-400 to-emerald-500' },
     MEDIUM: { label: 'Medium', folder: 'Cartoon', color: 'from-yellow-400 to-amber-500' },
@@ -96,7 +101,7 @@ export const EmotionGame = ({ onBack, onGameEnd }) => {
             const options = [correctEmotion, ...distractors].sort(() => 0.5 - Math.random());
 
             newQuestions.push({
-                imagePath: `/src/public/${correctEmotion}/${folderType}/${imageFile}`, // Adjusted path for Vite to serve from src/public if configured, or move to public root. 
+                //imagePath: `/src/public/${correctEmotion}/${folderType}/${imageFile}`, // Adjusted path for Vite to serve from src/public if configured, or move to public root. 
                 // NOTE: Standard Vite puts public assets at root. If your folder is src/public, import might be needed or move folder.
                 // Assuming "public" folder is served at root URL "/".
                 // If the folder structure is literally "src/public", we might need to import them or move them.
@@ -113,6 +118,7 @@ export const EmotionGame = ({ onBack, onGameEnd }) => {
                 // WAIT. If it's in `src` it is NOT public static asset by default unless configured.
                 // I will try to use the path relative to project root?
                 // Let's try: `src/public/...`
+                imagePath: EMOTION_IMAGE_URLS[`/src/public/${correctEmotion}/${folderType}/${imageFile}`],
 
                 correctAnswer: correctEmotion,
                 options: options
