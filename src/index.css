@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default: Soft Cute Vibes Theme */
+  /* Baby Pink (#FFD6E8), Light Sky Blue (#CDEBFF), Lavender (#E5D9FF) */
+  
+  /* bingo-blue -> Light Sky Blue */
+  --color-bingo-blue: 205 235 255; /* #CDEBFF */
+  
+  /* bingo-mint -> Baby Pink (for background gradients) */
+  --color-bingo-mint: 255 214 232; /* #FFD6E8 */
+  
+  /* bingo-yellow -> Pale Yellow (existing) */
+  --color-bingo-yellow: 255 244 191; /* #FFF4BF */
+  
+  /* bingo-lavender -> Lavender */
+  --color-bingo-lavender: 229 217 255; /* #E5D9FF */
+  
+  /* bingo-coral -> Pastel Coral */
+  --color-bingo-coral: 255 181 167; /* #FFB5A7 */
+  
+  /* bingo-navy -> Keep dark for contrast */
+  --color-bingo-navy: 30 42 59; /* #1E2A3B */
+
+  /* Shadows - Soft Glow */
+  --shadow-soft: 0 18px 45px rgba(229, 217, 255, 0.5);
+}
+
+.theme-summer {
+  /* Bright Summer Vibes Theme */
+  /* Sunny Yellow (#FFD84D), Bright Sky Blue (#7ED7FF), Coral */
+  
+  /* bingo-blue -> Bright Sky Blue */
+  --color-bingo-blue: 126 215 255; /* #7ED7FF */
+  
+  /* bingo-mint -> Sunny Yellow (for background gradients) */
+  --color-bingo-mint: 255 216 77; /* #FFD84D */
+  
+  /* bingo-yellow -> Paler Yellow for cards */
+  --color-bingo-yellow: 255 236 179; /* #FFECB3 */
+  
+  /* bingo-lavender -> Light Coral/Orange */
+  --color-bingo-lavender: 255 171 145; /* #FFAB91 */
+  
+  /* bingo-coral -> Vibrant Coral */
+  --color-bingo-coral: 255 112 67; /* #FF7043 */
+
+  /* Shadows - Warm Glow */
+  --shadow-soft: 0 18px 45px rgba(255, 216, 77, 0.25);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  @apply font-rounded bg-sky-50 text-slate-900 antialiased transition-colors duration-500;
+}
+
+.soft-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.soft-scrollbar::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.soft-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
